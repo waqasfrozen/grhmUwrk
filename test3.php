@@ -1,4 +1,5 @@
 <?php
+
 $handle = curl_init();
 $serverr = "http://34.238.235.155/";
 $url = "http://34.238.235.155:8000/test3";
@@ -11,10 +12,4 @@ curl_setopt($handle, CURLOPT_POSTFIELDS, $x);
 $output = curl_exec($handle);
 curl_close($handle);
 echo str_replace('"',"",$output);
-//$output=json_decode($output,true);
 
-
-//http://34.238.235.155:8000/test3
-
-
-?>

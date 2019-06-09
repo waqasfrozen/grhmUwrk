@@ -1,30 +1,24 @@
 <?php
-
 $handle = curl_init();
 $serverr = "http://34.238.235.155";
 $url = "http://34.238.235.155:8000/test2";
+
+//Sending Curl With empty payload..
 curl_setopt($handle, CURLOPT_URL, $url);
 curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($handle, CURLOPT_POST, true);
 
-//$x = json_encode(array("key"=>"abcXYZ123Key1"));
-//curl_setopt($handle, CURLOPT_POSTFIELDS, $x);
-
-
 $output = curl_exec($handle);
 curl_close($handle);
 $output = json_decode($output,true);
-
-//var_dump($output);die;
+//response received from API.
 
 ?>
-
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Graham</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -39,12 +33,11 @@ $output = json_decode($output,true);
             padding: 4px;
             border:1px solid #00000026;
         }
-        .imagess{
+        .first{
             width: 200px;
         }
     </style>
 </head>
-
 <body>
 <div class="container">
     <h1>Demo</h1>
@@ -53,7 +46,7 @@ $output = json_decode($output,true);
             <tr>
                 <?php foreach($output as $i=>$v){ ?>
                     <td>
-                        <img class="first imagess" id="<?= $v['key']; ?>" src="<?= $serverr ?><?= $v['image'] ?>" alt="">
+                        <img class="first <?= ($i == 4) ? "middle" : "outerr"; ?>" id="<?= $v['key']; ?>" src="<?= $serverr ?><?= $v['image'] ?>" alt="">
                     </td>
                     <?php if ($i % 3 == 0){ ?> </tr> <tr> <?php } ?>
                 <?php } ?>
@@ -63,7 +56,6 @@ $output = json_decode($output,true);
         </table>
     </div>
 </div>
-
 <div class="modal fade bs-example-modal-sm in" role="dialog" tabindex="-1" aria-labelledby="mySmallModalLabel">
     <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
@@ -95,13 +87,19 @@ $output = json_decode($output,true);
         </div>
     </div>
 </div>
-
 <script>
-    $(".first").click(function(){
+    //Sending outer 8 squares to http://34.238.235.155:8000/test2 with key of the image
+    $(".outerr").click(function(){
         var img = $(this).attr('id');
-        //console.log(img);
-        $.post("index2.php",{key:img},function (e) {
+        $.post("test2.php",{key:img},function (e) {
             console.log(e);
+        });
+    });
+
+    //Sending middle square to http://34.238.235.155:8000/test3 with key of the image
+    $(".middle").click(function(){
+        var img = $(this).attr('id');
+        $.post("test3.php",{key:img},function (e) {
             $("#downloaddd").attr("href","http://34.238.235.155"+e);
             $(".bs-example-modal-sm").modal("show");
         });
