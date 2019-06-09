@@ -46,7 +46,7 @@ $output = json_decode($output,true);
             <tr>
                 <?php foreach($output as $i=>$v){ ?>
                     <td>
-                        <img class="first <?= ($i == 4) ? "middle" : "outerr"; ?>" id="<?= $v['key']; ?>" src="<?= $serverr ?><?= $v['image'] ?>" alt="">
+                        <img class="first <?= ($i == 5) ? "middle" : "outerr"; ?>" id="<?= $v['key']; ?>" src="<?= $serverr ?><?= $v['image'] ?>" alt="">
                     </td>
                     <?php if ($i % 3 == 0){ ?> </tr> <tr> <?php } ?>
                 <?php } ?>
