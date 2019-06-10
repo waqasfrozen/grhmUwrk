@@ -34,14 +34,15 @@ $output = json_decode($output,true);
             border:1px solid #00000026;
         }
         .first{
-            width: 200px;
+            width: 150px;
         }
+
     </style>
 </head>
 <body>
 <div class="container">
     <h1>Demo</h1>
-    <div class="col-md-12">
+    <div class="col-md-6">
         <table>
             <tr>
                 <?php foreach($output as $i=>$v){ ?>
@@ -54,6 +55,13 @@ $output = json_decode($output,true);
             </tr>
 
         </table>
+    </div>
+    <div class="col-md-6">
+        <div class="col-md-12">
+            <div id="outputResponce" style="background: #e8e8e8">
+
+            </div>
+        </div>
     </div>
 </div>
 <div class="modal fade bs-example-modal-sm in" role="dialog" tabindex="-1" aria-labelledby="mySmallModalLabel">
@@ -91,18 +99,34 @@ $output = json_decode($output,true);
     //Sending outer 8 squares to http://34.238.235.155:8000/test2 with key of the image
     $(".outerr").click(function(){
         var img = $(this).attr('id');
+
+        $("#outputResponce").append("<h4>Outer Box image clicked...</h4>");
+        $("#outputResponce").append("<p><strong>Sending:</strong> {'key':'"+ img +"'} to http://34.238.235.155:8000/test2 </p>");
         $.post("test2.php",{key:img},function (e) {
-            console.log(e);
+
+            $("#outputResponce").append("<p><strong>Response Recieved</strong> : " + e + "</p>");
+
         });
+
+
     });
 
     //Sending middle square to http://34.238.235.155:8000/test3 with key of the image
     $(".middle").click(function(){
         var img = $(this).attr('id');
+
+        $("#outputResponce").append("<h4>Middle Box image clicked...</h4>");
+        $("#outputResponce").append("<p><strong>Sending:</strong> {'key':'"+ img +"'} to http://34.238.235.155:8000/test3 </p>");
+
         $.post("test3.php",{key:img},function (e) {
             $("#downloaddd").attr("href","http://34.238.235.155"+e);
             $(".bs-example-modal-sm").modal("show");
+
+            $("#outputResponce").append("<p><strong>Response Recieved</strong> : " + e + "</p>");
+
         });
+
+
     });
 </script>
 </body>
