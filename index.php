@@ -134,7 +134,6 @@ $output = json_decode($output,true);
 <script>
     //Sending outer 8 squares to http://34.238.235.155:8000/test2 with key of the image
     $(".outerr").click(function(){
-        //$("#outputResponce").html("");
 
         var img = $(this).attr('id');
 
@@ -151,7 +150,6 @@ $output = json_decode($output,true);
 
     //Sending middle square to http://34.238.235.155:8000/test3 with key of the image
     $(".middle").click(function(){
-        //$("#outputResponce").html("");
 
         var img = $(this).attr('id');
 
