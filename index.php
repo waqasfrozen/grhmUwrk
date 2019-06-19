@@ -13,6 +13,7 @@ curl_close($handle);
 $output = json_decode($output,true);
 //response received from API.
 
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -137,11 +138,11 @@ $output = json_decode($output,true);
 
         var img = $(this).attr('id');
 
-        //$("#outputResponce").append("<h4>Outer Box image clicked...</h4>");
-        //$("#outputResponce").append("<p><strong>Sending:</strong> {'key':'"+ img +"'} to http://34.238.235.155:8000/test2 </p>");
+        console.log("Outer Box image clicked...");
+        console.log("Sending: {'key':'"+ img +"'} to http://34.238.235.155:8000/test2 ");
         $.post("test2.php",{key:img},function (e) {
 
-            //$("#outputResponce").append("<p><strong>Response Recieved</strong> : " + e + "</p>");
+            console.log("Response Received : " + e );
 
         });
 
@@ -154,23 +155,19 @@ $output = json_decode($output,true);
 
         var img = $(this).attr('id');
 
-        //$("#outputResponce").append("<h4>Middle Box image clicked...</h4>");
-        //$("#outputResponce").append("<p><strong>Sending:</strong> {'key':'"+ img +"'} to http://34.238.235.155:8000/test3 </p>");
+        console.log("Middle Box image clicked...");
+        console.log("Sending: {'key':'"+ img +"'} to http://34.238.235.155:8000/test3 ");
 
         $.post("test3.php",{key:img},function (e) {
-            $("#downloaddd").attr("href","http://34.238.235.155"+e);
+            $("#downloaddd").attr("href","http://34.238.235.155" + e);
             $(".bs-example-modal-sm").modal("show");
 
-            //$("#outputResponce").append("<p><strong>Response Recieved</strong> : " + e + "</p>");
+            console.log("Response Received : " + e );
 
         });
 
 
     });
 </script>
-
-
-
-
 </body>
 </html>
