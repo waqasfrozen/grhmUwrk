@@ -41,21 +41,22 @@ $output = json_decode($output,true);
         </br> <span  class="second" style="font-size: xx-large">click on the center to purchase ($9)</span>
     </h1>
     <div class="main-box">
-        <div class="inner">
+        <div class="inner" id="outputDataOfImages">
             <div class="row">
                 <?php foreach($output as $i=>$v){ ?>
                 <div class="col-md-4 pad">
                     <div class="box">
                         <img class="img-responsive" src="<?= $serverr ?><?= $v['image'] ?>" alt="">
                         <div class="overlay">
-                            <h2>Click me</h2>
-                            <a class="info first <?= ($i == 5) ? "middle" : "outerr"; ?>" id="<?= $v['key']; ?>" style="cursor: pointer;">Click me</a>
+                            <h2>Click me </h2>
+                            <a class="info first" onclick="<?= ($i == 5) ? "middle()" : "outerr();"; ?>" id="<?= $v['key']; ?>" style="cursor: pointer;">Click me</a>
                         </div>
                     </div>
                 </div>
 
                 <?php if ($i % 3 == 0){ ?></div><div class="row"><?php } ?>
-                    <?php } ?>
+
+                <?php } ?>
             </div>
         </div>
     </div>
@@ -133,23 +134,21 @@ $output = json_decode($output,true);
 
 <script>
     //Sending outer 8 squares to http://34.238.235.155:8000/test2 with key of the image
-    $(".outerr").click(function(){
+    function outerr(){
 
         var img = $(this).attr('id');
 
         console.log("Outer Box image clicked...");
         console.log("Sending: {'key':'"+ img +"'} to http://34.238.235.155:8000/test2 ");
         $.post("test2.php",{key:img},function (e) {
-
-            console.log("Response Received : " + e );
-
+            $("#outputDataOfImages").html(e);
         });
 
 
-    });
+    }
 
     //Sending middle square to http://34.238.235.155:8000/test3 with key of the image
-    $(".middle").click(function(){
+    function middle(){
 
         var img = $(this).attr('id');
 
@@ -165,7 +164,7 @@ $output = json_decode($output,true);
         });
 
 
-    });
+    }
 </script>
 </body>
 </html>
