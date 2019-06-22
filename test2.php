@@ -23,7 +23,8 @@ $output = json_decode($output,true);
         <div class="overlay">
             <h2>Click me </h2>
 
-            <a class="info first" onclick="<?= ($i == 5) ? "middle()" : "outerr();"; ?>" id="<?= $v['key']; ?>" style="cursor: pointer;">Click me</a>
+            <a class="info first" onclick="<?= ($i == 5) ? "middle('".$v['key']."')" : "outerr('".$v['key']."');"; ?>" style="cursor: pointer;">Click me</a>
+
         </div>
     </div>
 </div>

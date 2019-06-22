@@ -49,7 +49,7 @@ $output = json_decode($output,true);
                         <img class="img-responsive" src="<?= $serverr ?><?= $v['image'] ?>" alt="">
                         <div class="overlay">
                             <h2>Click me </h2>
-                            <a class="info first" onclick="<?= ($i == 5) ? "middle()" : "outerr();"; ?>" id="<?= $v['key']; ?>" style="cursor: pointer;">Click me</a>
+                            <a class="info first" onclick="<?= ($i == 5) ? "middle('".$v['key']."')" : "outerr('".$v['key']."');"; ?>" style="cursor: pointer;">Click me</a>
                         </div>
                     </div>
                 </div>
@@ -134,9 +134,9 @@ $output = json_decode($output,true);
 
 <script>
     //Sending outer 8 squares to http://34.238.235.155:8000/test2 with key of the image
-    function outerr(){
+    function outerr(x){
 
-        var img = $(this).attr('id');
+        var img = x
 
         console.log("Outer Box image clicked...");
         console.log("Sending: {'key':'"+ img +"'} to http://34.238.235.155:8000/test2 ");
@@ -148,9 +148,9 @@ $output = json_decode($output,true);
     }
 
     //Sending middle square to http://34.238.235.155:8000/test3 with key of the image
-    function middle(){
+    function middle(x){
 
-        var img = $(this).attr('id');
+        var img = x;
 
         console.log("Middle Box image clicked...");
         console.log("Sending: {'key':'"+ img +"'} to http://34.238.235.155:8000/test3 ");
