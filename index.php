@@ -153,15 +153,17 @@ $output = json_decode($output,true);
         var img = x;
 
         console.log("Middle Box image clicked...");
-        console.log("Sending: {'key':'"+ img +"'} to http://34.238.235.155:8000/test3 ");
+        //console.log("Sending: {'key':'"+ img +"'} to http://34.238.235.155:8000/test3 ");
 
-        $.post("test3.php",{key:img},function (e) {
-            $("#downloaddd").attr("href","http://34.238.235.155" + e);
-            $(".bs-example-modal-sm").modal("show");
+        window.location.href = "paypal/process.php?id="+img+"&paypal=checkout";
 
-            console.log("Response Received : " + e );
-
-        });
+//        $.post("test3.php",{key:img},function (e) {
+//            $("#downloaddd").attr("href","http://34.238.235.155" + e);
+//            $(".bs-example-modal-sm").modal("show");
+//
+//            console.log("Response Received : " + e );
+//
+//        });
 
 
     }
