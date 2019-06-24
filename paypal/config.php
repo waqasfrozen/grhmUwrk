@@ -6,8 +6,7 @@
 		define('PPL_API_USER', 'waqas1_api1.gmail.com');
 		define('PPL_API_PASSWORD', '92R6ZW4EBCZ36TGC');
 		define('PPL_API_SIGNATURE', 'A6paVutjtNZJ4oOan3cpTdXeJadIA7o10xVVLpEQW3cbCE8AeOQ5jerM');
-	}
-	else{
+	}else{
 		define('PPL_API_USER', 'somepaypal_api.yahoo.co.uk');
 		define('PPL_API_PASSWORD', '123456789');
 		define('PPL_API_SIGNATURE', 'opupouopupo987kkkhkixlksjewNyJ2pEq.Gufar');

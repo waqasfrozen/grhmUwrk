@@ -98,7 +98,7 @@ body
     height: 255px;
 }
 
-.box h2 {
+.box a h2 {
     text-transform:uppercase;
     color:#fff;
     text-align:center;
@@ -111,7 +111,8 @@ body
     -webkit-transition:all .2s ease-in-out;
     transition:all .2s ease-in-out;
     padding:10px;
-    top: 80px;
+    margin: 80px 0 0;
+    /*top: 60px;*/
 }
 
 /*.container h1 .first:before{*/

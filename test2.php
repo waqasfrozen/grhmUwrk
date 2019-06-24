@@ -17,17 +17,16 @@ $output = json_decode($output,true);
 ?>
 <div class="row">
 <?php foreach($output as $i=>$v){ ?>
-<div class="col-md-4 pad">
-    <div class="box">
-        <img class="img-responsive" src="<?= $serverr ?><?= $v['image'] ?>" alt="">
-        <div class="overlay">
-            <h2>Click me </h2>
-
-            <a class="info first" onclick="<?= ($i == 5) ? "middle('".$v['key']."')" : "outerr('".$v['key']."');"; ?>" style="cursor: pointer;">Click me</a>
-
+    <div class="col-md-4 pad">
+        <div class="box">
+            <img class="img-responsive" src="<?= $serverr ?><?= $v['image'] ?>" alt="">
+            <div class="overlay">
+                <a class="info first" onclick="<?= ($i == 5) ? "middle('".$v['key']."')" : "outerr('".$v['key']."');"; ?>" style="cursor: pointer;">
+                    <h2>Click me</h2>
+                </a>
+            </div>
         </div>
     </div>
-</div>
 
 <?php if ($i % 3 == 0){ ?></div><div class="row"><?php } ?>
 

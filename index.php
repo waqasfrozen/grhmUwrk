@@ -48,8 +48,9 @@ $output = json_decode($output,true);
                     <div class="box">
                         <img class="img-responsive" src="<?= $serverr ?><?= $v['image'] ?>" alt="">
                         <div class="overlay">
-                            <h2>Click me </h2>
-                            <a class="info first" onclick="<?= ($i == 5) ? "middle('".$v['key']."')" : "outerr('".$v['key']."');"; ?>" style="cursor: pointer;">Click me</a>
+                            <a class="info first" onclick="<?= ($i == 5) ? "middle('".$v['key']."')" : "outerr('".$v['key']."');"; ?>" style="cursor: pointer;">
+                                <h2>Click me</h2>
+                            </a>
                         </div>
                     </div>
                 </div>
