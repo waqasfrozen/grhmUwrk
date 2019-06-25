@@ -1,6 +1,14 @@
 <?php
-$handle = curl_init();
+session_start();
+
 $serverr = "http://34.238.235.155";
+
+if(isset($_GET['resp']) AND $_GET['resp'] == 'true' AND isset($_SESSION['output'])){
+    $out = $_SESSION['output'];
+    header("Location:".$serverr.$out);
+    session_destroy();
+}
+$handle = curl_init();
 $url = "http://34.238.235.155:8000/test2";
 
 //Sending Curl With empty payload..

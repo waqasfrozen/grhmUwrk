@@ -11,6 +11,6 @@ curl_setopt($handle, CURLOPT_POSTFIELDS, $x);
 
 $output = curl_exec($handle);
 curl_close($handle);
-echo $output;
-//echo str_replace('"',"",$output);
+//echo $output;
+echo str_replace('"',"",$output);
 
