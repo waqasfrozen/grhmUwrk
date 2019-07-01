@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 $handle = curl_init();
 $serverr = "http://34.238.235.155/";
 $url = "http://34.238.235.155:8000/test2";
@@ -13,6 +13,7 @@ $output = curl_exec($handle);
 curl_close($handle);
 $output = json_decode($output,true);
 //echo str_replace('"',"",$output);
+$_SESSION['api_response'] = $output;
 
 ?>
 <div class="row">
@@ -27,8 +28,6 @@ $output = json_decode($output,true);
             </div>
         </div>
     </div>
-
-<?php if ($i % 3 == 0){ ?></div><div class="row"><?php } ?>
-
-    <?php } ?>
+    <?php if ($i % 3 == 0){ ?></div><div class="row"><?php } ?>
+<?php } ?>
 </div>

@@ -11,6 +11,7 @@
 		define('PPL_API_PASSWORD', '123456789');
 		define('PPL_API_SIGNATURE', 'opupouopupo987kkkhkixlksjewNyJ2pEq.Gufar');
 	}
+	define('graham_redirect', 'http://localhost/graham/index.php');
 	define('PPL_LANG', 'EN');
 	define('PPL_LOGO_IMG', '');
 	define('PPL_RETURN_URL', $link.'/success.php');

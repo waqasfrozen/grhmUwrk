@@ -3,23 +3,22 @@ session_start();
 
 $serverr = "http://34.238.235.155";
 
-if(isset($_GET['resp']) AND $_GET['resp'] == 'true' AND isset($_SESSION['output'])){
-    $out = $_SESSION['output'];
-    header("Location:".$serverr.$out);
-    session_destroy();
+
+
+if(isset($_SESSION['api_response']) AND !empty($_SESSION['api_response'])){
+    $output = $_SESSION['api_response'];
+}else{
+    $handle = curl_init();
+    $url = "http://34.238.235.155:8000/test2";
+    curl_setopt($handle, CURLOPT_URL, $url);
+    curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($handle, CURLOPT_POST, true);
+    $output = curl_exec($handle);
+    curl_close($handle);
+    $output = json_decode($output,true);
+    $_SESSION['api_response'] = $output;
 }
-$handle = curl_init();
-$url = "http://34.238.235.155:8000/test2";
 
-//Sending Curl With empty payload..
-curl_setopt($handle, CURLOPT_URL, $url);
-curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($handle, CURLOPT_POST, true);
-
-$output = curl_exec($handle);
-curl_close($handle);
-$output = json_decode($output,true);
-//response received from API.
 
 
 ?>
@@ -77,24 +76,21 @@ $output = json_decode($output,true);
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
-                    <h4 class="modal-title" id="mySmallModalLabel">Engage Payment</h4>
+                    <h4 class="modal-title" id="mySmallModalLabel">Download Ready</h4>
                 </div>
                 <div class="modal-body clearfix">
                     <div class="col-md-12">
                         <p style="text-align: center">
                             <img src="https://logos-download.com/wp-content/uploads/2016/03/PayPal_logo_logotype_emblem.png" style="width: 100px">
                         </p>
-                        <form class="form-horizontal" action="">
+
+                        <div class="form-group">
+                            <h3></h3>
+                        </div>
+
                             <div class="form-group">
-                                <input type="text" placeholder="Email" class="form-control">
+                                <a href="" target="_blank" id="downloaddd" class="form-control">Download Now</a>
                             </div>
-                            <div class="form-group">
-                                <input type="password" placeholder="Password" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <a href="" target="_blank" id="downloaddd" class="form-control">Pay Now</a>
-                            </div>
-                        </form>
 
                     </div>
                 </div>
@@ -145,7 +141,7 @@ $output = json_decode($output,true);
     //Sending outer 8 squares to http://34.238.235.155:8000/test2 with key of the image
     function outerr(x){
 
-        var img = x
+        var img = x;
 
         console.log("Outer Box image clicked...");
         console.log("Sending: {'key':'"+ img +"'} to http://34.238.235.155:8000/test2 ");
@@ -177,5 +173,20 @@ $output = json_decode($output,true);
 
     }
 </script>
+<?php
+if(isset($_GET['resp']) AND $_GET['resp'] == 'true' AND isset($_SESSION['output'])){
+    $out = $_SESSION['output'];
+    ?>
+<script>
+    $("document").ready(function(){
+        $(".bs-example-modal-sm").modal("show");
+        $("#downloaddd").attr("href",'<?= $serverr.$out ?>');
+        $("#downloaddd").click();
+    })
+</script>
+    <?php
+    session_destroy();
+}
+?>
 </body>
 </html>
