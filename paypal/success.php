@@ -1,7 +1,5 @@
 <?php
 
-
-
 include_once("config.php");
 include_once("functions.php");
 include_once("paypal.class.php");
@@ -24,13 +22,8 @@ include_once("paypal.class.php");
 		    $id = explode("%3a",$httpParsedResponseAr['L_NAME0']);
 		    $id = $id[(count($id)-1)];
 
-
-
-
 //            echo $x;
 //            echo $output;
-
-
 
         }else{
 		    echo "Something went wrong!";die;

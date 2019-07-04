@@ -226,7 +226,7 @@
 
                 $_SESSION['output'] = $output;
 
-                header("Location:".graham_redirect."?resp=true");
+                header("Location:http://34.238.235.155/index.php?resp=true");
 			}
 			else  {
                 print_r($httpParsedResponseAr);
