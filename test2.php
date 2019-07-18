@@ -18,11 +18,11 @@ $_SESSION['api_response'] = $output;
 ?>
 <div class="row">
 <?php foreach($output as $i=>$v){ ?>
-    <div class="col-md-4 pad">
-        <div class="box">
+    <div class="col-md-4 pad" onclick="<?= ($i == 5) ? "middle('".$v['key']."')" : "outerr('".$v['key']."');"; ?>" >
+        <div class="box" style="cursor: pointer;">
             <img class="img-responsive" src="<?= $serverr ?><?= $v['image'] ?>" alt="">
             <div class="overlay">
-                <a class="info first" onclick="<?= ($i == 5) ? "middle('".$v['key']."')" : "outerr('".$v['key']."');"; ?>" style="cursor: pointer;">
+                <a class="info first" style="cursor: pointer;">
                     <h2>Click me</h2>
                 </a>
             </div>
